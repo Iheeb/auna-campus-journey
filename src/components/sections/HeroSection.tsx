@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import HeroScene from "./three/HeroScene";
+import HeroScene from "../three/HeroScene";
 
 const HeroSection = () => {
   const ref = useRef<HTMLElement>(null);
