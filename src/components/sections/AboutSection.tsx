@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import "./sections.css";
 
 const STORY = [
   {
@@ -25,62 +26,50 @@ const AboutSection = () => {
 
   return (
     <section id="about" className="section-shell">
-      <div ref={ref} className="relative z-10 mx-auto w-full max-w-6xl">
+      <div ref={ref} className="about-wrap">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="mb-16 text-center"
+          className="section-header"
         >
-          <span className="inline-block text-xs tracking-[0.3em] uppercase text-secondary mb-4">
-            Chapter 01 · Origins
-          </span>
-          <h2 className="font-display text-4xl md:text-6xl font-bold leading-tight">
+          <span className="eyebrow">Chapter 01 · Origins</span>
+          <h2 className="section-title">
             <span className="text-gradient">A story still</span>{" "}
             <span className="text-gradient-aurora">being written.</span>
           </h2>
-          <p className="mt-6 max-w-2xl mx-auto text-muted-foreground text-lg">
+          <p className="section-lead mx-auto" style={{ marginLeft: "auto", marginRight: "auto" }}>
             AUNA isn't a place you attend. It's a journey you become part of —
             an evolving constellation of disciplines, technologies and people.
           </p>
         </motion.div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/40 to-transparent hidden md:block" />
+        <div className="timeline">
+          <div className="timeline-line" />
 
-          <div className="space-y-12 md:space-y-24">
+          <div className="timeline-list">
             {STORY.map((s, i) => (
               <motion.div
                 key={s.year}
                 initial={{ opacity: 0, y: 50 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.9, delay: 0.2 + i * 0.2 }}
-                className={`relative flex flex-col md:flex-row items-center gap-8 ${
-                  i % 2 === 1 ? "md:flex-row-reverse" : ""
-                }`}
+                className={`timeline-item${i % 2 === 1 ? " is-flipped" : ""}`}
               >
-                <div className="md:w-1/2">
-                  <div className="glass border-glow rounded-3xl p-8 hover:bg-card-glow transition-all duration-500 group">
-                    <div className="text-xs tracking-[0.25em] uppercase text-secondary mb-3">
-                      {s.year}
-                    </div>
-                    <h3 className="font-display text-2xl md:text-3xl font-semibold mb-3 text-gradient">
-                      {s.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {s.body}
-                    </p>
+                <div className="timeline-half">
+                  <div className="timeline-card glass border-glow" style={{ borderRadius: "1.5rem" }}>
+                    <div className="timeline-year">{s.year}</div>
+                    <h3 className="timeline-title text-gradient">{s.title}</h3>
+                    <p className="timeline-body">{s.body}</p>
                   </div>
                 </div>
 
-                {/* Center node */}
-                <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 h-5 w-5 items-center justify-center">
-                  <span className="absolute inset-0 rounded-full bg-aurora animate-ping opacity-50" />
-                  <span className="relative h-3 w-3 rounded-full bg-aurora glow-primary" />
+                <div className="timeline-node">
+                  <span className="timeline-node-ping" />
+                  <span className="timeline-node-core glow-primary" />
                 </div>
 
-                <div className="md:w-1/2" />
+                <div className="timeline-half" />
               </motion.div>
             ))}
           </div>

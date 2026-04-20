@@ -5,6 +5,7 @@ import campus2 from "@/assets/campus-2.jpg";
 import campus3 from "@/assets/campus-3.jpg";
 import campus4 from "@/assets/campus-4.jpg";
 import campus5 from "@/assets/campus-5.jpg";
+import "./PhotoBackdrop.css";
 
 const PHOTOS = [campus1, campus2, campus3, campus4, campus5];
 const INTERVAL = 7000;
@@ -20,7 +21,7 @@ const PhotoBackdrop = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="photo-backdrop">
       <AnimatePresence mode="sync">
         <motion.div
           key={index}
@@ -31,12 +32,12 @@ const PhotoBackdrop = () => {
             opacity: { duration: 2, ease: "easeInOut" },
             scale: { duration: INTERVAL / 1000 + 2, ease: "linear" },
           }}
-          className="absolute inset-0"
+          className="photo-backdrop-slide"
         >
           <img
             src={PHOTOS[index]}
             alt="University campus background"
-            className="h-full w-full object-cover"
+            className="photo-backdrop-img"
             loading={index === 0 ? "eager" : "lazy"}
             width={1920}
             height={1280}
@@ -44,9 +45,8 @@ const PhotoBackdrop = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Tinted overlays for legibility + brand vibe */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/60 to-background/85" />
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 via-transparent to-secondary/20 mix-blend-overlay" />
+      <div className="photo-backdrop-overlay-1" />
+      <div className="photo-backdrop-overlay-2" />
     </div>
   );
 };

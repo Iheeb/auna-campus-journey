@@ -1,0 +1,35 @@
+.photo-backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.photo-backdrop-slide {
+  position: absolute;
+  inset: 0;
+}
+.photo-backdrop-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.photo-backdrop-overlay-1 {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--background) / 0.7),
+    hsl(var(--background) / 0.6),
+    hsl(var(--background) / 0.85)
+  );
+}
+.photo-backdrop-overlay-2 {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top right,
+    hsl(var(--primary) / 0.2),
+    transparent,
+    hsl(var(--secondary) / 0.2)
+  );
+  mix-blend-mode: overlay;
+}
