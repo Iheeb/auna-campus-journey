@@ -60,7 +60,7 @@ const CentralDome = () => {
 const CampusScene = () => {
   return (
     <Canvas
-      className="!absolute inset-0"
+      style={{ position: "absolute", inset: 0 }}
       camera={{ position: [6, 5, 8], fov: 50 }}
       dpr={[1, 1.8]}
       shadows
@@ -71,7 +71,6 @@ const CampusScene = () => {
         <pointLight position={[-6, 4, -6]} intensity={1.5} color="#22d3ee" />
         <pointLight position={[6, 2, -4]} intensity={1} color="#ec4899" />
 
-        {/* Ground grid */}
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]} receiveShadow>
           <planeGeometry args={[24, 24]} />
           <meshStandardMaterial
@@ -86,7 +85,6 @@ const CampusScene = () => {
 
         <CentralDome />
 
-        {/* Buildings around */}
         <Building position={[-3, 0.5, 2]} height={2} color="#6366f1" />
         <Building position={[3, 0.75, 2]} height={2.5} color="#22d3ee" />
         <Building position={[-3, 0.75, -2]} height={2.5} color="#ec4899" />
@@ -95,7 +93,6 @@ const CampusScene = () => {
         <Building position={[5, 1.25, 0]} height={3.5} color="#a78bfa" />
         <Building position={[0, 0.6, -4.5]} height={2.2} color="#f472b6" />
 
-        {/* Floating particles */}
         <Float speed={2} floatIntensity={2}>
           <mesh position={[-2, 3, 1]}>
             <sphereGeometry args={[0.18, 16, 16]} />

@@ -54,7 +54,7 @@ const FloatingOrb = ({
 const HeroScene = () => {
   return (
     <Canvas
-      className="!absolute inset-0"
+      style={{ position: "absolute", inset: 0 }}
       camera={{ position: [0, 0, 5], fov: 55 }}
       dpr={[1, 1.8]}
       gl={{ antialias: true, alpha: true }}
@@ -71,15 +71,7 @@ const HeroScene = () => {
         <FloatingOrb position={[2.1, 1.8, -2]} color="#a78bfa" scale={0.7} />
         <FloatingOrb position={[-2.4, -1.6, -1.5]} color="#60a5fa" scale={0.85} />
 
-        <Stars
-          radius={60}
-          depth={40}
-          count={1800}
-          factor={3}
-          saturation={0.3}
-          fade
-          speed={0.6}
-        />
+        <Stars radius={60} depth={40} count={1800} factor={3} saturation={0.3} fade speed={0.6} />
       </Suspense>
     </Canvas>
   );

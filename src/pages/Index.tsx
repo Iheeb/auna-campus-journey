@@ -8,12 +8,12 @@ import StudentLifeSection from "@/components/sections/StudentLifeSection";
 import AdmissionsSection from "@/components/sections/AdmissionsSection";
 import ContactSection from "@/components/sections/ContactSection";
 import PhotoBackdrop from "@/components/PhotoBackdrop";
+import "./pages.css";
 
 const Index = () => {
   return (
-    <main className="relative">
-      {/* Global animated photo backdrop */}
-      <div className="fixed inset-0 -z-10 pointer-events-none">
+    <main className="app">
+      <div className="bg-fixed">
         <PhotoBackdrop />
       </div>
 
