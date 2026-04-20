@@ -1,0 +1,81 @@
+.journey-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform-origin: left;
+  z-index: 50;
+  background: var(--gradient-aurora);
+}
+
+.journey-side {
+  display: none;
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.25rem;
+}
+@media (min-width: 1024px) {
+  .journey-side { display: flex; }
+}
+
+.journey-stop {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.journey-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+  opacity: 0;
+  transform: translateX(-0.5rem);
+  transition: all 0.5s ease;
+}
+.journey-stop:hover .journey-label {
+  opacity: 0.7;
+  transform: translateX(0);
+}
+.journey-label.is-active {
+  opacity: 1;
+  transform: translateX(0);
+  color: hsl(var(--foreground));
+}
+
+.journey-dot {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 0.75rem;
+  width: 0.75rem;
+}
+.journey-dot-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background-color: hsl(var(--muted-foreground) / 0.4);
+  transform: scale(0.75);
+  transition: all 0.5s ease;
+}
+.journey-dot-fill.is-active {
+  background: var(--gradient-aurora);
+  transform: scale(1);
+  box-shadow: 0 0 18px hsl(var(--primary) / 0.8);
+}
+.journey-dot-ping {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--gradient-aurora);
+  animation: ping 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  opacity: 0.6;
+}
